@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{m_name}}
+{% endblock %}
+{% block body %}
+<main class="container py-5">
+    <h4 align="center">Выбранный магазин: {{m_name}}</h4>
+    <br/>
+    {% for el in items %}
+    <div style="background: #6f00cc; border-radius: 100px;" class="card text-white text-center p-3">
+        <figure class="mb-0">
+            <blockquote class="blockquote">
+                <p><b class="text-warning">Категория:</b> {{el.category}}</p>
+                <p><b class="text-info">Артикул:</b> {{ el.articul }}</p>
+                <p><b class="text-warning">Название:</b> {{ el.name }}</p>
+                <p><b class="text-info">Цена:</b> {{ el.price_new }}</p>
+                <p><b class="text-warning">Старая цена:</b> {{ el.price_old }}</p>
+                <p><b class="text-info">Бренд:</b> {{ el.brend }}</p>
+                <br/>
+                <button type="button" class="btn btn-warning" onclick="window.location.href = '{{el.link}}'">Страница с товаром</button>
+                <a href="/graph_params={{el.all_prices}}" target="_blank"><button type="button" class="btn btn-dark">Статистика цен</button></a>
+
+            </blockquote>
+        </figure>
+    </div>
+    <br/>
+    {% endfor %}
+</main>
+{% endblock %}
