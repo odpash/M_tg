@@ -42,7 +42,6 @@ def main():
                     all_categoies.append(lower_category)
             except:
                 all_categoies.append(middle_category)
-o
     print(all_categoies)
 
 

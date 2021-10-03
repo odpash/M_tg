@@ -53,7 +53,9 @@ def parse_items():
                                              requests.get('https://www.perekrestok.ru/cat', headers=h).text.split(
                                                  '{"accessToken":"')[1].split(
                                                  '"')[0]
-                                add_r = requests.get(f'https://www.perekrestok.ru/api/customer/1.4.1.0/catalog/product/plu{item["masterData"]["plu"]}', headers=h2).json()
+                                add_r = requests.get(
+                                    f'https://www.perekrestok.ru/api/customer/1.4.1.0/catalog/product/plu{item["masterData"]["plu"]}',
+                                    headers=h2).json()
                                 pr_n = str(item['priceTag']['price'])
                                 pr_o = str(item['priceTag']['grossPrice'])
                                 pr_n = (pr_n[:-2] + ',' + pr_n[-2::])
@@ -68,8 +70,9 @@ def parse_items():
                                     'price_old': pr_o,
                                     'brend': add_r['content']['features'][0]['items'][1]['displayValues'][0],
                                     'link': f'https://www.perekrestok.ru/cat/2/p/{item["masterData"]["slug"]}-{item["masterData"]["plu"]}'
-                                } # https://www.perekrestok.ru/cat/2/p/vino-mateus-rozovoe-polusuhoe-0-75l-11-59542
-                                write_to_bd.write(d['category'], d['articul'], d['name'], d['price_new'], d['price_old'], d['brend'], d['link'])
+                                }  # https://www.perekrestok.ru/cat/2/p/vino-mateus-rozovoe-polusuhoe-0-75l-11-59542
+                                write_to_bd.write(d['category'], d['articul'], d['name'], d['price_new'],
+                                                  d['price_old'], d['brend'], d['link'])
                             except:
                                 pass
                     except:

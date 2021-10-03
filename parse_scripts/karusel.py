@@ -21,6 +21,9 @@ def parse_all():
                     'brend': '',
                     'link': f'https://karusel.ru/catalog/{k["catalog"]}/{k["category"]}/product/{k["id"]}/?shop=144'
                 }
+                print(d)
                 items.append(d)
     return items
 
+
+print(parse_all())

@@ -5,33 +5,42 @@
 {% endblock %}
 
 {% block body %}
-<div align="center"><div style="width: 90%">
-<canvas id="myChart"></canvas>
+<div align="center">
+    <div style="width: 90%">
+        <canvas id="myChart"></canvas>
+    </div>
 </div>
-</div>
-    <script>
-var ctx = document.getElementById('myChart').getContext('2d');
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
 
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: {{param}},
-        datasets: [{
-            label: 'График',
-            data: {{param2}},
-            borderColor: [
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 5
-        }]
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: {
+    {
+        param
+    }
     },
-options: {
+    datasets: [{
+        label: 'График',
+        data: {{param2}
+    },
+    borderColor: [
+        'rgba(54, 162, 235, 1)'
+    ],
+        borderWidth
+    :
+    5
+    }]
+    },
+    options: {
         scales: {
             y: {
                 beginAtZero: true
             }
         }
     }
-});
+    })
+    ;
 </script>
 {% endblock %}

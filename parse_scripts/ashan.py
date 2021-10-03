@@ -42,7 +42,7 @@ h2 = {
 
 }
 def parse():
-    cooks = '_gcl_au=1.1.2027637761.1632476796; isAddressPopupShown_=true; region_id=1; merchant_ID_=1; methodDelivery_=1; _GASHOP=001_Mitishchi; _ga_6KC2J1XGF1=GS1.1.1632476796.1.0.1632476796.60; _ym_uid=16324768011019538093; _ym_d=1632476801; mindboxDeviceUUID=17ec81e5-160c-4cad-af77-ed799a56b9fc; directCrm-session=%7B%22deviceGuid%22%3A%2217ec81e5-160c-4cad-af77-ed799a56b9fc%22%7D; cto_bundle=XLUrEV9vejIyWSUyRkMzZ0c3QlRpY25XNk5UJTJCd1RnQUtmekpGaHVtSGZQSnhsQ3ZXaGtuUXpvb1g2NTJDTU5qUTZFenZjdVc0RyUyQiUyRmpybk1LUUFzNXhTc3VBb3VKeGoxbVhuRkgwU3F2QWFFcmFVVlJPeGxUVXE3anJGVTdJcmFvYlUxJTJCRHY; tmr_lvid=4edeb51a053dbb7bf1d21ce64ddef378; tmr_lvidTS=1632476802023; _ga=GA1.2.1012019419.1632476799; _gid=GA1.2.362944778.1632476802; rrpvid=699281875068058; _clck=1sagjaf|1|ev0|0; rcuid=614d9e824f38c500016e8e2b; _clsk=910lga|1632476803785|1|1|f.clarity.ms/collect; _ym_isad=1; _fbp=fb.1.1632476804517.1281770100; tmr_detect=0%7C1632476804816; tmr_reqNum=6; qrator_jsr=1632483367.698.DjhExb4QEHcVjFmf-egurladpdo2j9hh4gao87eifclnvteal-00; qrator_jsid=1632483367.698.DjhExb4QEHcVjFmf-ef0emf4fmcuc0mc6luvd67ja5nctgt14'
+    cooks = '_gcl_au=1.1.1837774347.1631826848; isAddressPopupShown_=true; region_id=1; merchant_ID_=1; methodDelivery_=1; _GASHOP=001_Mitishchi; tmr_lvid=14dda095bb524c5eb17dd2af420ac2c3; tmr_lvidTS=1631826848308; _ym_d=1631826848; _ym_uid=1631826848261013207; rrpvid=750693147579692; mindboxDeviceUUID=e8494128-4aa6-44b1-af63-97e99bdea9e8; directCrm-session=%7B%22deviceGuid%22%3A%22e8494128-4aa6-44b1-af63-97e99bdea9e8%22%7D; rcuid=613c589d29b9b30001cc75de; _fbp=fb.1.1631826849319.444513681; device_id=1202296304406.9033; auth_block_type_email=1; rrlevt=1632484354224; qrator_jsr=1633244280.249.cA8svlRWQvBfO33t-2668pufgsfet0ji0n5fipggr1vrccih6-00; qrator_jsid=1633244280.249.cA8svlRWQvBfO33t-i7rkihiv30ujie4bli1mvmg5vb7p710l; qrator_ssid=1633244281.536.Xwp4BIHFttAYG7Aw-h7c4no7s2h3pbb5jv7ca6g3crhhrd4s2; _gid=GA1.2.1728228386.1633244286; _clck=s2iqz8|1|ev9|0; _dc_gtm_UA-49770337-2=1; _ym_isad=2; _dc_gtm_UA-112545724-4=1; _gat_UA-49770337-2=1; _ga_6KC2J1XGF1=GS1.1.1633244284.7.1.1633244304.40; _ga=GA1.2.1260261874.1631826848; cto_bundle=OS1k0l8yaTJLRUpFTlNyeHB5NHhZOHUzR1gzTWU3a211dlRzSjVQelB6bUZCSXBvSlVEQnZFY3VXcndHdFNJViUyRkNtU0NaOTYlMkJld0VFN0U0WG5qTmVId3Q2RDBZWk4lMkZ4ZmwlMkJCT3hkdXoyUHFsc1FrRUFMVXJEMVJ2V3hXU2xFJTJCQzIlMkZxMWlmdkRXQUFxcnJ5bEE3TmhmVVh5eEElM0QlM0Q; _clsk=135j8i7|1633244308946|2|1|b.clarity.ms/collect; tmr_detect=0%7C1633244310617; tmr_reqNum=69'
     h['Cookie'] = cooks
     h2['Cookie'] = cooks
 
@@ -62,14 +62,15 @@ def parse():
                     'window.__INITIAL_STATE__ = ', ''))
                 for z in req['thirdLvlCategory']['productsData']['items']:
                     d = {
-                        'category': z['categoryCodes'],
+                        'category': z['categoryCodes'][0]['name'],
                         'articul': z['gimaId'],
                         'name': z['title'],
-                        'price_new': z['price'],
+                        'price_new': z['price']['value'],
                         'price_old': z['oldPrice'],
-                        'brend': z['brand'],
+                        'brend': z['brand']['name'],
                         'link': 'https://www.auchan.ru/product/' + z['code']
                     }
+                    print(d)
                     items.append(d)
     return items
 
